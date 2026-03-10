@@ -29,6 +29,7 @@ Find `*/outline.yaml` file in current working directory, read items list, execut
 - `{output_dir}`: execution.output_dir from outline.yaml (default: ./results)
 - `{fields_path}`: absolute path to {topic}/fields.yaml
 - `{output_path}`: absolute path to {output_dir}/{item_name_slug}.json (slugify item_name: replace spaces with _, remove special chars)
+- `{validator_path}`: absolute path to the installed `validate_json.py` in the local Codex skills directory, e.g. `C:/Users/<user>/.codex/skills/research/validate_json.py` on Windows or `/home/<user>/.codex/skills/research/validate_json.py` on Linux/macOS
 
 **Hard Constraint**: The following prompt must be strictly reproduced, only replacing variables in {xxx}, do not modify structure or wording.
 
@@ -51,7 +52,7 @@ Read {fields_path} to get all field definitions
 
 ## Validation
 After completing JSON output, run validation script to ensure complete field coverage:
-python /home/weizhena/.codex/skills/research/validate_json.py -f {fields_path} -j {output_path}
+python {validator_path} -f {fields_path} -j {output_path}
 Task is complete only after validation passes.
 """
 ```
@@ -61,10 +62,10 @@ Task is complete only after validation passes.
 ## Task
 Research name: GitHub Copilot
 category: International Product
-description: Developed by Microsoft/GitHub, first mainstream AI coding assistant, ~40% market share, output structured JSON to /home/weizhena/AIcoding/aicoding-history/results/GitHub_Copilot.json
+description: Developed by Microsoft/GitHub, first mainstream AI coding assistant, ~40% market share, output structured JSON to C:/Research/AIcoding/aicoding-history/results/GitHub_Copilot.json
 
 ## Field Definitions
-Read /home/weizhena/AIcoding/aicoding-history/fields.yaml to get all field definitions
+Read C:/Research/AIcoding/aicoding-history/fields.yaml to get all field definitions
 
 ## Output Requirements
 1. Output JSON according to fields defined in fields.yaml
@@ -73,11 +74,11 @@ Read /home/weizhena/AIcoding/aicoding-history/fields.yaml to get all field defin
 4. All field values must be in English
 
 ## Output Path
-/home/weizhena/AIcoding/aicoding-history/results/GitHub_Copilot.json
+C:/Research/AIcoding/aicoding-history/results/GitHub_Copilot.json
 
 ## Validation
 After completing JSON output, run validation script to ensure complete field coverage:
-python /home/weizhena/.codex/skills/research/validate_json.py -f /home/weizhena/AIcoding/aicoding-history/fields.yaml -j /home/weizhena/AIcoding/aicoding-history/results/GitHub_Copilot.json
+python C:/Users/<user>/.codex/skills/research/validate_json.py -f C:/Research/AIcoding/aicoding-history/fields.yaml -j C:/Research/AIcoding/aicoding-history/results/GitHub_Copilot.json
 Task is complete only after validation passes.
 ```
 
